@@ -11,27 +11,18 @@ public class MadiunMobil extends LayananTransport {
         int digitAkhir = Integer.parseInt(nim.substring(nim.length() - 2)); 
         return (jarak * 5000) + 3000 + (digitAkhir * 100);
     }
-    public double hitungTarif(String nimMahasiswa) {
-        double tarifDasar = jarak * 5000; 
-        int duaDigitNIM = getDuaDigitTerakhirNIM(nimMahasiswa);
-    
-        double biayaAdmin = 3000 + (duaDigitNIM * 100); 
-        
-        return tarifDasar + biayaAdmin;
-    }
-
-    private int getDuaDigitTerakhirNIM(String nimMahasiswa) {
-        return Integer.parseInt(nimMahasiswa.substring(nimMahasiswa.length() - 2));
-    }
 
     @Override
-    public void prosesTransaksi(String namaUser, String metodeTransaksi) {
+    public void prosesTransaksi(String nama, String nimOutput) {
+        System.out.println("Transaksi oleh " + nama + " - " + nimOutput + " Validasi Saldo: ");
+        
         double tarif = hitungTarif();
         if (saldo >= tarif) {
             saldo -= tarif;
-            System.out.println("Transaksi berhasil. Tarif: " + tarif);
+            System.out.println("- Driver: " + namaDriver + " | Jarak: " + jarak + "km | Total Bayar: Rp" + tarif + " | Sisa Saldo: Rp" + saldo);
         } else {
-            System.out.println("Saldo tidak cukup untuk transaksi.");
+            System.out.println("Gagal: Saldo tidak mencukupi untuk perjalanan ini!");
         }
+        System.out.println("--------------------------------------------------");
     }
 }
