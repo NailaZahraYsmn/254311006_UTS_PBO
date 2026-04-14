@@ -11,12 +11,12 @@ public class MadiunMotor extends LayananTransport {
 
     @Override
     public void prosesTransaksi(String namaMahasiswa, String nimMahasiswa) {
-        System.out.println("transaksi oleh: "+ "-"+ nimMahasiswa + "validasi saldo: " + saldo);
+        System.out.println("transaksi oleh: " + namaMahasiswa + " - " + nimMahasiswa + " Validasi Saldo: " + saldo);
         
         double tarif = hitungTarif();
         if (saldo >= tarif) {
             saldo -= tarif;
-            System.out.println("nama driver: " + namaDriver + "jarak: " + jarak + "km" + "tarif: " + tarif + "sisa saldo: " + saldo);
+            System.out.println("nama driver: " + namaDriver + " jarak: " + jarak + " km " + " tarif: " + tarif + " sisa saldo: " + saldo);
         } else {
             System.out.println("Saldo tidak cukup untuk transaksi.");
         }
